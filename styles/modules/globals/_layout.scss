@@ -1,0 +1,1151 @@
+// mixins and extends
+%borderCoopLs {
+	border: $borderGreen;
+	border-radius: 8px;
+}
+
+@mixin fontBannerTitleLs($weight: 500) {
+	font-size: 48px;
+	line-height: 46px;
+	font-weight: $weight;
+	text-transform: uppercase;
+}
+
+@mixin fontTitleLs($weight: 700) {
+	font-size: 36px;
+	line-height: 42px;
+	font-weight: $weight;
+}
+
+@mixin fontTitleMobLs($weight: 500) {
+	font-size: 28px;
+	line-height: 46px;
+	font-weight: $weight;
+}
+
+@mixin fontBlockMob {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+@mixin fontTextLs {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+@mixin font16Ls {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+%buttonLs {
+    border-radius: 6px;
+    background-color: $color-main;
+    color: $colorWhite;
+    @include fontBig;
+    padding: 8px 16px;
+}
+
+%flexColCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+%flexSbCenter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+%flexCenterCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+%margAuto {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+%padd {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+%boxContainerLs {
+    border-radius: 8px;
+    box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+    background-color: $colorWhite;
+}
+
+%dotGreenLs {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background-color: $colorCard;
+    width: 13px;
+    height: 13px;
+}
+
+@mixin paddMob {
+    width: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+@mixin _1376 {
+	@media (max-width: $smScreenWidth) {
+		@content;
+	}
+}
+
+@mixin _1080 {
+    @media (max-width: $smallestScreenWidth) {
+		@content;
+	}
+}
+
+@mixin _960 {
+    @media (max-width: $bigMobileWidth) {
+		@content;
+	}
+}
+
+@mixin _680 {
+    @media (max-width: $mobileWidth) {
+		@content;
+	}
+}
+
+
+
+
+// main style
+.cooperation-ls {
+   font-family: 'Roboto', sans-serif;
+   color: $color-new-grey;
+}
+
+.cooperation-banner-ls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 35px;
+    @include _680 {
+        margin-bottom: 16px;
+    }
+}
+
+.banner-ls {
+    &__wrp {
+        position: relative;
+        @extend %padd;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 400px;
+        @include _680 {
+            height: 213px;
+        }
+    }
+    &__img {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        object-fit: cover;
+        @include _680 {
+            display: none;
+        }
+    }
+    &__img-mob {
+        display: none;
+        @include _680 {
+            display: block;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            object-fit: cover;
+        }
+    }
+    &__info-wrp {
+        position: relative;
+        width: 100%;
+        max-width: 1500px;
+        display: flex;
+        justify-content: flex-end;
+        @extend %margAuto;
+        @include _680 {
+            display: none;
+        }
+    }
+    &__info-container {
+        max-width: 700px;
+        padding: 10px;
+        background-color: rgba(57, 61, 56, 0.5);
+        text-align: end;
+    }
+    &__info-title {
+        @include fontBannerTitleLs;
+        color: $colorWhite;
+        margin-bottom: 24px;
+    }
+    &__info-title-mob {
+        display: none;
+        @include _680 {
+            display: block;
+            @include fontTitleMobLs;
+            text-transform: uppercase;
+            text-align: center;
+        }
+    }
+    &__info-text {
+        @include fontMid;
+        color: $colorWhite;
+    }
+}
+
+.quality-ls {
+    &__wrp {
+        @extend %padd;
+        @extend %margAuto;
+        @extend %flexColCenter;
+        align-items: center;
+        margin-bottom: 18px;
+        gap: 40px;
+        @include _680 {
+            @include paddMob;
+            gap: 16px;
+            margin-bottom: 10px;
+        }
+    }
+    &__title {
+        max-width: 940px;
+        width: 100%;
+        @include fontTitleLs;
+        text-align: center;
+        @include _680 {
+            @include fontMid;
+            max-width: 450px;
+        }
+    }
+    &__text-wrp {
+        width: 100%;
+        max-width: 759px;
+        @extend %borderCoopLs;
+        padding: 15px 16px;
+        @extend %flexSbCenter;
+        @include _680 {
+            max-width: 450px;
+            padding: 10px;
+        }
+    }
+    &__img-wrp {
+        margin-right: 24px;
+        @include _680 {
+            margin-right: 10px;
+        }
+    }
+    &__img {
+        @include _680 {
+            display: none;
+        }
+    }
+    &__img-mob {
+        display: none;
+        @include _680 {
+            display: block;
+        }
+    }
+    &__text {
+        @include fontMidHeader;
+        text-align: left;
+        max-width: 500px;
+        width: 100%;
+        @include _680 {
+            @include fontSmall;
+        }
+    }
+}
+
+.work-ls {
+    &__wrp {
+        max-width: 1532px;
+        @extend %margAuto;
+        @extend %padd;
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(2, auto);
+        margin-bottom: 40px;
+        @include _960 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 32px;
+            gap: 16px;
+        }
+        @include _680 {
+            @include paddMob;
+        }
+    }
+    &__opera-img-wrp {
+        position: relative;
+        height: 488px;
+        grid-row-start: 1;
+        grid-column-start: 2;
+        @include _1376 {
+            height: 418px;
+        }
+        @include _1080 {
+            height: 398px;
+        }
+        @include _960 {
+            height: auto;
+        }
+    }
+    &__opera-img {
+        position: absolute;
+        @include _960 {
+            position: static;
+        }
+        @include _680 {
+            display: none;
+        }
+    }
+    &__opera-img-mob {
+        display: none;
+        @include _680 {
+            display: block;
+        }
+    }
+    &__opera-text {
+        grid-row-start: 1;
+        grid-column-start: 1;
+        width: 100%;
+        max-width: 689px;
+        @include fontMidHeader;
+        text-align: right;
+        align-self: center;
+        justify-self: center;
+        @include _960 {
+            font-size: 18px;
+            text-align: center;
+        }
+        @include _680 {
+            @include font16Ls;
+            max-width: 355px;
+        }
+    }
+    &__airport-img-wrp {
+        position: relative;
+        height: 591px;
+        @include _1376 {
+            height: 471px;
+        }
+        @include _1080 {
+            height: 371px;
+        }
+        @include _960 {
+            height: auto;
+        }
+    }
+    &__airport-img {
+        position: absolute;
+        @include _960 {
+            position: static;
+        }
+        @include _680 {
+            display: none;
+        }
+    }
+    &__airport-img-mob {
+        display: none;
+        @include _680 {
+            display: block;
+        }
+    }
+    &__partner-wrp {
+        width: 100%;
+        max-width: 689px;
+        @include fontMidHeader;
+        text-align: left;
+        @extend %flexColCenter;
+        justify-self: center;
+        gap: 48px;
+        @include _960 {
+            font-size: 18px;
+            text-align: center;
+            align-items: center;
+            gap: 24px;
+        }
+        @include _680 {
+            @include font16Ls;
+            max-width: 355px;
+            gap: 0;
+        }
+    }
+    &__partner-text-g {
+        color: $colorCard;
+        @include _680 {
+            margin-bottom: 16px;
+        }
+    }
+    &__partner-button {
+        width: 100%;
+        max-width: 250px;
+        @extend %buttonLs;
+        &:hover {
+            background-color: $colorHoverButton;
+        }
+    }
+}
+
+.product-ls {
+    &__wrp {
+        max-width: 1532px;
+        @extend %margAuto;
+        @extend %padd;
+        margin-bottom: 40px;
+        @extend %flexColCenter;
+        gap: 40px;
+        @include _680 {
+            @include paddMob;
+            margin-bottom: 16px;
+            gap: 10px;
+        }
+    }
+    &__title {
+        @extend %margAuto;
+        @include fontTitleLs;
+        text-align: center;
+        max-width: 1090px;
+        width: 100%;
+        @include _680 {
+            max-width: 450px;
+            @include fontMidHeader;
+            margin-bottom: 6px;
+        }
+    }
+    &__goods-wrp {
+        @extend %flexCenterCenter;
+    }
+    &__goods-img-wrp {
+        @include _680 {
+            display: none;
+        }
+    }
+    &__line {
+        position: relative;
+        height: 1px;
+        width: 90px;
+        background-color: $colorCard;
+        &::after {
+            @extend %dotGreenLs;
+            right: -8px;
+            top: -6px;
+        }
+        @include _680 {
+            display: none;
+        }
+    }
+    &__block-wrp {
+        @extend %flexSbCenter;
+        @extend %boxContainerLs;
+        padding: 16px;
+        gap: 35px;
+        @include _1080 {
+            gap: 10px;
+        }
+        @include _680 {
+            flex-direction: column;
+            justify-content: center;
+            padding: 10px;
+        }
+    }
+    &__block-text-wrp {
+        width: 100%;
+        max-width: 430px;
+        @extend %flexColCenter;
+        align-items: flex-start;
+        gap: 16px;
+        text-align: left;
+        @include _680 {
+            gap: 10px;
+        }
+    }
+    &__block-title {
+        @include fontMidHeader;
+        @include _960 {
+            @include font16Ls;
+        }
+    }
+    &__block-text {
+        @include fontMid;
+        @include _960 {
+            @include fontBlockMob;
+        }
+    }
+    &__block-more {
+        @include fontMid;
+        border-bottom: 1px solid $colorCard;
+        color: $colorCard;
+        cursor: pointer;
+        &:hover {
+            color: $colorHoverButton;
+            border-color: $colorHoverButton;
+        }
+    }
+    &__text-wrp {
+        width: 100%;
+        max-width: 855px;
+        @extend %margAuto;
+        @extend %borderCoopLs;
+        @extend %flexCenterCenter;
+        gap: 39px;
+        @include _680 {
+            max-width: 450px;
+            padding: 12px 0;
+            gap: 10px;
+        }
+    }
+    &__img-wrp {
+        width: 100%;
+        max-width: 296px;
+        @include _680 {
+        max-width: 115px;
+        }
+    }
+    &__img {
+        @include _680 {
+            display: none;
+        }
+    }
+    &__img-mob {
+        display: none;
+        @include _680 {
+            display: block;
+        }
+    }
+    &__text {
+        width: 100%;
+        max-width: 519px;
+        @include fontMidHeader;
+        @include _680 {
+        @include fontBlockMob;
+        }
+    }
+}
+
+.advantage-ls {
+    &__wrp {
+        max-width: 1532px;
+        @extend %margAuto;
+        @extend %padd;
+        @extend %flexColCenter;
+        gap: 30px;
+        margin-bottom: 34px;
+        @include _680 {
+            gap: 10px;
+            @include paddMob;
+        }
+    }
+    &__title {
+        width: 100%;
+        max-width: 980px;
+        @extend %margAuto;
+        @include fontTitleLs;
+        text-align: center;
+        @include _680 {
+            @include fontMidHeader;
+            max-width: 540px;
+        }
+    }
+    &__img-wrp {
+        @extend %margAuto;
+    }
+    &__img {
+        @include _680 {
+            display: none;
+        }
+    }
+    &__img-mob {
+        display: none;
+        @include _680 {
+            display: block;
+        }
+    }
+    &__block-list {
+        @extend %flexCenterCenter;
+        flex-wrap: wrap;
+        gap: 16px;
+        @include _680 {
+            gap: 11px;
+        }
+    }
+    &__block-wrp {
+        width: 100%;
+        max-width: 287px;
+        height: 342px;
+        padding: 0 20px;
+        @extend %boxContainerLs;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 16px;
+        @include _680 {
+            max-width: 172px;
+            height: 295px;
+            gap: 10px;
+            padding: 11px 7px;
+        }
+    }
+    &__block-text {
+        @include fontMidHeader;
+        text-align: center;
+        @include _680 {
+            @include fontBlockMob;
+        }
+    }
+    &__foot-wrp {
+        @extend %flexCenterCenter;
+        gap: 16px;
+        @include _960 {
+            flex-direction: column;
+        }
+    }
+    &__iso-wrp {
+        width: 100%;
+        max-width: 670px;
+        height: 235px;
+        @extend %borderCoopLs;
+        @extend %flexCenterCenter;
+        gap: 39px;
+        padding: 41px 65px 41px 16px;
+        @include _1080 {
+            padding: 31px 40px 31px 16px;
+        }
+        @include _680 {
+            max-width: 450px;
+            height: 110px;
+            padding: 11px 10px;
+            gap: 10px;
+        }
+    }
+    &__iso-img-wrp {
+        width: 100%;
+        max-width: 155px;
+        @include _680 {
+            max-width: 86px;
+        }
+    }
+    &__iso-img {
+        @include _680 {
+            display: none;
+        }
+    }
+    &__iso-img-mob {
+        display: none;
+        @include _680 {
+            display: block;
+        }
+    }
+    &__iso-text {
+        @include fontMidHeader;
+        text-align: left;
+        @include _1080 {
+            font-size: 20px;
+        }
+        @include _680 {
+            @include fontBlockMob;
+        }
+    }
+    &__partner-wrp {
+        width: 100%;
+        max-width: 815px;
+        height: 235px;
+        @extend %flexCenterCenter;
+        gap: 39px;
+        border-radius: 8px;
+        box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+        background: radial-gradient(78.59% 778.17% at 1.35% 0%, #10D35E 0%, #0E54A7 100%);
+        padding: 4px 14px 4px 0;
+        @include _1080 {
+            gap: 19px;
+        }
+        @include _960 {
+            max-width: 670px;
+        }
+        @include _680 {
+            max-width: 450px;
+            height: auto;
+            flex-direction: column;
+            gap: 39px;
+            padding: 10px 7px;
+        }
+    }
+    &__partner-img-wrp {
+        width: 100%;
+        max-width: 257px;
+    }
+    &__partner-text-wrp {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        @include _680 {
+            align-items: center;
+        }
+    }
+    &__partner-title {
+        @include fontMidHeader;
+        text-align: left;
+        color: $colorWhite;
+        @include _1080 {
+            font-size: 20px;
+        }
+        @include _680 {
+            font-size: 24px;
+            text-align: center;
+        }
+    }
+    &__partner-text {
+        @include fontTextLs;
+        text-align: left;
+        color: $colorWhite;
+        @include _1080 {
+            font-size: 18px;
+        }
+        @include _680 {
+            @include font16Ls;
+            width: 70%;
+            text-align: center;
+        }
+    }
+    &__partner-button {
+        width: 100%;
+        max-width: 250px;
+        @extend %buttonLs;
+        background-color: $colorWhite;
+        color: $colorCard;
+        @include _680 {
+            max-width: 355px;
+        }
+    }
+}
+
+.profit-ls {
+    &__wrp {
+        color: $colorWhite;
+        @include _680 {
+            margin-bottom: 5px;
+        }
+    }
+    &__banner-wrp {
+        width: 100%;
+        height: 566px;
+        position: relative;
+        @extend %flexColCenter;
+        align-items: flex-end;
+        @include _680 {
+            height: 898px;
+            align-items: center;
+            justify-content: flex-start;
+        }
+    }
+    &__img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        object-fit: cover;
+        @include _680 {
+            display: none;
+        }
+    }
+    &__img-mob {
+        display: none;
+        @include _680 {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            object-fit: cover;
+            display: block;
+        }
+    }
+    &__text-container {
+        width: 100%;
+        max-width: 1500px;
+        position: relative;
+        @extend %flexColCenter;
+        align-items: flex-end;
+        gap: 24px;
+        @extend %margAuto;
+        @extend %padd;
+        @include _680 {
+            margin-right: 0;
+            align-items: center;
+            gap: 10px;
+            padding: 50px 8px 0 8px;
+        }
+    }
+    &__title {
+        @include fontBannerTitleLs;
+        margin-bottom: 80px;
+        text-align: right;
+        @include _680 {
+            font-size: 28px;
+            line-height: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    }
+    &__text-wrp {
+        width: 100%;
+        max-width: 575px;
+        @include _680 {
+            max-width: 450px;
+        }
+    }
+    &__text {
+        @include font16Ls;
+        font-weight: 500;
+        text-align: right;
+        &:nth-child(2) {
+            margin-bottom: 24px;
+            @include _680 {
+                margin-bottom: 20px;
+            }
+        }
+        @include _680 {
+            text-align: center;
+        }
+    }
+    &__button {
+        width: 100%;
+        max-width: 191px;
+        @extend %buttonLs;
+        @include _680 {
+            max-width: 250px;
+        }
+        &:hover {
+            background-color: $colorHoverButton;
+        }
+    }
+}
+
+.b2b-ls {
+    &__wrp {
+        margin-bottom: 58px;
+        @include _680 {
+            margin-bottom: 20px;
+        }
+    }
+    &__banner-wrp {
+        width: 100%;
+        height: 864px;
+        position: relative;
+        @extend %flexColCenter;
+        align-items: flex-end;
+        @include _680 {
+            position: static;
+            height: auto;
+        }
+    }
+    &__img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        object-fit: cover;
+        @include _680 {
+            display: none;
+        }
+    }
+    &__img-mob-wrp {
+        display: none;
+        width: 100%;
+        @include _680 {
+            display: block;
+            margin-bottom: 16px;
+        }
+    }
+    &__img-mob {
+        width: 100%;
+    }
+    &__text-container {
+        position: relative;
+        max-width: 1500px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        @extend %margAuto;
+        @extend %padd;
+        gap: 99px;
+        @include _680 {
+            position: static;
+            @include paddMob;
+            align-items: center;
+        }
+    }
+    &__text-wrp {
+        width: 100%;
+        max-width: 818px;
+        @include _1376 {
+            max-width: 650px;
+        }
+        @include _680 {
+            display: none;
+        }
+    }
+    &__title {
+        @include fontTitleLs;
+        text-align: left;
+        margin-bottom: 16px;
+    }
+    &__title-text {
+        font-size: 36px;
+        line-height: 42px;
+        font-weight: 400;
+        text-align: left;
+    }
+    &__text-list {
+        width: 100%;
+        max-width: 709px;
+        @extend %flexColCenter;
+        gap: 16px;
+        @include _1376 {
+            max-width: 550px;
+        }
+        @include _680 {
+            gap: 10px;
+        }
+    }
+    &__text-list-item {
+        position: relative;
+        @include fontMidHeader;
+        text-align: left;
+        @extend %boxContainerLs;
+        padding: 16px 14px 16px 45px;
+        &::before {
+            @extend %dotGreenLs;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            @include _680 {
+                left: 10px;
+            }
+        }
+        @include _680 {
+            @include font16Ls;
+            font-weight: 400;
+            padding: 10px 18px 10px 39px;
+        }
+    }
+    &__btn {
+        width: 100%;
+        max-width: 191px;
+        @extend %buttonLs;
+        color: $colorWhite;
+        &:hover {
+           background-color: $colorHoverButton;
+        }
+    }
+}
+
+.request-ls {
+    &__wrp {
+        @extend %flexColCenter;
+        @extend %padd;
+        align-items: center;
+        gap: 50px;
+        @include _680 {
+            gap: 20px;
+            @include paddMob;
+        }
+    }
+    &__container {
+        @extend %flexCenterCenter;
+        gap: 16px;
+    }
+    &__img-wrp {
+        width: 100%;
+        @include _960 {
+            display: none;
+        }
+    }
+    &__img {
+        width: 100%;
+    }
+    &__form-container {
+        width: 100%;
+        max-width: 715px;
+        @extend %flexColCenter;
+        align-items: flex-start;
+        gap: 16px;
+        @include _1376 {
+            max-width: 450px;
+        }
+        @include _1080 {
+            gap: 12px;
+            max-width: 350px;
+        }
+        @include _960 {
+            max-width: 80%;
+        }
+        @include _680 {
+            max-width: 100%;
+        }
+    }
+    &__title {
+        @include fontMidHeader;
+        text-align: left;
+        @include _1080 {
+            font-size: 20px;
+            line-height: 22px;
+        }
+        @include _960 {
+            font-size: 24px;
+            line-height: 24px;
+            text-align: center;
+        }
+    }
+    &__title-text {
+        @include fontTextLs;
+        text-align: left;
+        @include _1080 {
+            @include fontMid;
+        }
+    }
+    &__img-mob-wrp {
+        display: none;
+        @include _960 {
+            width: 100%;
+            display: block;
+        }
+    }
+    &__img-mob {
+        width: 100%;
+    }
+    &__form-wrp {
+        width: 100%;
+    }
+    &__form {
+        @extend %flexColCenter;
+        gap: 16px;
+        box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 16px;
+        @include _1080 {
+            gap: 12px;
+        }
+        @include _960 {
+            align-items: center
+        }
+    }
+    &__form-title {
+        @include fontMidHeader;
+        text-align: left;
+        color: $colorCard;
+    }
+    &__form-title-text {
+        max-width: 470px;
+        @include font16Ls;
+        font-weight: 400;
+        text-align: left;
+        @include _960 {
+            max-width: 340px;
+            text-align: center;
+        }
+        @include _680 {
+            @include fontBlockMob;
+        }
+    }
+    &__input-wrp {
+        width: 100%;
+    }
+    &__label {
+        @include fontCaption;
+        cursor: auto;
+    }
+    &__input {
+        width: 100%;
+        max-width: 679px;
+        height: 44px;
+        border: $borderForm;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: 400;
+        padding: 0 12px;
+        &:focus {
+            border-color: $colorCard;
+        }
+    }
+    &__form-checkbox-wrp {
+        width: 100%;
+        max-width: 277px;
+        display: flex;
+        align-items: flex-start;
+    }
+    &__form-checkbox-label {
+        position: relative;
+        max-width: 240px;
+        padding-left: 26px;
+    }
+    &__form-checkbox {
+        position: absolute;
+        left: 4px;
+        top: 4px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+    }
+    &__form-checkbox-style {
+        position: absolute;
+        margin-left: -26px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: $borderForm;
+        cursor: pointer;
+    }
+    &__form-checkbox:checked + .request-ls__form-checkbox-style::before {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: $colorCard;
+        border-radius: 50%;
+        left: 2px;
+        top: 2px;
+    }
+    &__form-checkbox-private-policy {
+        color: $colorCard;
+    }
+    &__form-button {
+        width: 100%;
+        max-width: 261px;
+        @extend %buttonLs;
+        text-align: center;
+        @include _680 {
+            max-width: 336px;
+        }
+        &:hover {
+            background-color: $colorHoverButton;
+        }
+    }
+    &__end-text {
+        @include fontMidHeader;
+        color: $colorCard;
+        text-align: center;
+        @include _680 {
+            @include fontMid;
+        }
+    }
+}
